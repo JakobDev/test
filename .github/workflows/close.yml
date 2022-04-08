@@ -5,8 +5,6 @@ on:
     types: opened
   pull_request_target:
     types: opened
-  schedule:
-    - cron: '0 * * * *'
 
 permissions:
   issues: write
@@ -17,3 +15,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: dessant/repo-lockdown@v2
+        with:
+          issue-comment: 'hallo [jjj](zzz)'
