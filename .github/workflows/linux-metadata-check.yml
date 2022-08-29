@@ -29,7 +29,7 @@ jobs:
 
     - name: "Check .desktop"
       run:
-        desktop-file-validate dist/linux/inco.cemu.Cemu.desktop
+        desktop-file-validate dist/linux/info.cemu.Cemu.desktop
         
 
     - name: "Check AppStream"
