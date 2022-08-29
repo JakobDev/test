@@ -24,16 +24,14 @@ jobs:
     steps:
     - name: "Install packages"
       run: |
-        ls
         pacman --noconfirm -Syy
         pacman --noconfirm -S desktop-file-utils appstream
-        ls
 
     - name: "Check .desktop"
-      run:
-        desktop-file-validate dist/linux/info.cemu.Cemu.desktop
+      run: 
+        desktop-file-validate ./dist/linux/info.cemu.Cemu.desktop
         
 
     - name: "Check AppStream"
       run:
-        appstreamcli validate --explain dist/linux/info.cemu.Cemu.metainfo.xml
+        appstreamcli validate --explain ./dist/linux/info.cemu.Cemu.metainfo.xml
