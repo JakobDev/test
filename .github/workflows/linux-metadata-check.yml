@@ -24,8 +24,8 @@ jobs:
     steps:
     - name: "Install packages"
       run: |
-        pacman -Syy
-        pacman -S desktop-file-utils appstream
+        pacman --noconfirm -Syy
+        pacman --noconfirm -S desktop-file-utils appstream
 
     - name: "Check .desktop"
       run:
