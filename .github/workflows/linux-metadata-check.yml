@@ -24,6 +24,7 @@ jobs:
     steps:
     - name: "Install packages"
       run: |
+        ls
         pacman --noconfirm -Syy
         pacman --noconfirm -S desktop-file-utils appstream
         ls
