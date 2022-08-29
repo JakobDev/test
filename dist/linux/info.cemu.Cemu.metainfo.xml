@@ -2,7 +2,7 @@
 <component type="desktop">
   <!--Created with jdAppdataEdit 4.2-->
   <id>info.cemu.Cemu</id>
-  <id>info.cemzu.Ceu</id>
+  <id>info.cemozu.Ceu</id>
   <name>Cemu</name>
   <summary>Software to emulate Wii U games and applications on PC</summary>
   <summary xml:lang="de">Software zum emulieren von Wii U Spielen und Anwendungen auf dem PC</summary>
