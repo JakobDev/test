@@ -26,6 +26,7 @@ jobs:
       run: |
         pacman --noconfirm -Syy
         pacman --noconfirm -S desktop-file-utils appstream
+        ls
 
     - name: "Check .desktop"
       run:
