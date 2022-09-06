@@ -17,9 +17,7 @@ jobs:
         run: |
           sudo apt install -y flatpak python3-gi
           wget https://raw.githubusercontent.com/gasinvein/flatpak-remote-metadata/master/flatpak-remote-metadata.py
-          ls
-          pwd
-          python3 fatpak-remote-metadata.py -u https://dl.flathub.org/repo flathub > repodata.json
+          python3 flatpak-remote-metadata.py -u https://dl.flathub.org/repo flathub > repodata.json
           python3 -m pip install -r requirements.txt
           python3 ./update.py
 
