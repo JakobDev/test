@@ -8,17 +8,22 @@ on:
     - cron: "0 0 * * *"
 
 jobs:
-  deploy:
+  Deploy:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
 
-      - name: Update data
+      - name: Install dependencies
         run: |
           sudo apt install -y flatpak python3-gi gir1.2-flatpak-1.0 gir1.2-ostree-1.0
           wget https://raw.githubusercontent.com/gasinvein/flatpak-remote-metadata/master/flatpak-remote-metadata.py
-          python3 flatpak-remote-metadata.py -u https://dl.flathub.org/repo flathub > repodata.json
           python3 -m pip install -r requirements.txt
+
+      - name: Run flatpak-remote-metadata
+        run: python3 flatpak-remote-metadata.py -u https://dl.flathub.org/repo flathub > repodata.json
+
+      - name: Update data
+        run: |
           python3 ./update.py
 
       - name: Deploy
