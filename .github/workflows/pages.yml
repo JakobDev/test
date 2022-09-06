@@ -1,4 +1,4 @@
-name: github pages
+name: Deploy
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt install -y flatpak python-gobject
+          sudo apt install -y flatpak python-gobject
           python3 -m pip install -r requirements.txt
           wget https://raw.githubusercontent.com/gasinvein/flatpak-remote-metadata/master/flatpak-remote-metadata.py
 
