@@ -1,0 +1,36 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          apt install -y flatpak python-gobject
+          python3 -m pip install -r requirements.txt
+          wget https://raw.githubusercontent.com/gasinvein/flatpak-remote-metadata/master/flatpak-remote-metadata.py
+
+      - name: Run flatpak-remote-metadata
+        run: python3 fatpak-remote-metadata.py -u https://dl.flathub.org/repo flathub > repodata.json
+
+      - name: Update data
+        run: |
+          python3 -m pip install -r requirements.txt
+          python3 ./update.py
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
