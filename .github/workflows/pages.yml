@@ -15,6 +15,7 @@ jobs:
 
       - name: Update data
         run: |
+          sudo apt update
           sudo apt install -y flatpak python-gobject
           wget https://raw.githubusercontent.com/gasinvein/flatpak-remote-metadata/master/flatpak-remote-metadata.py
           python3 fatpak-remote-metadata.py -u https://dl.flathub.org/repo flathub > repodata.json
