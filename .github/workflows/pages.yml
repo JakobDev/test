@@ -13,18 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y flatpak python3-gi
-          python3 -m pip install -r requirements.txt
-          wget https://raw.githubusercontent.com/gasinvein/flatpak-remote-metadata/master/flatpak-remote-metadata.py
-
-      - name: Run flatpak-remote-metadata
-        run: python3 fatpak-remote-metadata.py -u https://dl.flathub.org/repo flathub > repodata.json
-
       - name: Update data
         run: |
+          sudo apt install -y flatpak python-gobject
+          wget https://raw.githubusercontent.com/gasinvein/flatpak-remote-metadata/master/flatpak-remote-metadata.py
+          python3 fatpak-remote-metadata.py -u https://dl.flathub.org/repo flathub > repodata.json
           python3 -m pip install -r requirements.txt
           python3 ./update.py
 
