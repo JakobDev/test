@@ -1,1 +1,2 @@
 six
+minecraft-launcher-lib==5.0
