@@ -1,4 +1,4 @@
 contact_links:
-  - name: GitHub Community Support
-    url: https://github.com/orgs/community/discussions
-    about: jjh
+  - name: Documentation
+    url: https://minecraft-launcher-lib.readthedocs.io
+    about: Take a look at the official documentation. before creating a Issue. It may help your with your Problem.
