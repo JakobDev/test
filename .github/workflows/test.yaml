@@ -48,6 +48,8 @@ jobs:
           "https://api.github.com/repos/${{ github.repository }}/pulls?base=${{ env.GIT_BASE_BRANCH }}" \
           > .pulls.json
 
+          cat .pulls.json
+
           declare -i count=0
           while :
           do
