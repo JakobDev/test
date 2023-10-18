@@ -1,2 +1,2 @@
 bug:
-  - head-branch: ["main"]
+  - base-branch: ["main"]
