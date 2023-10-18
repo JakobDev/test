@@ -21,7 +21,7 @@ jobs:
         branch: [ branch/5.15-22.08, branch/5.15-23.08, branch/6.5 ]
     steps:
       - name: Make sure the Label exists
-      - run: |
+        run: |
           curl -L \
           -X POST \
           -H "Accept: application/vnd.github+json" \
