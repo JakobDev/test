@@ -15,4 +15,4 @@ jobs:
                 -X GET \
                 -H "Accept: application/vnd.github.v3+json" \
                 -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-                'https://api.github.com/repos/${{ github.repository }}/pulls?base=${{ env.GIT_BASE_BRANCH }}&head=${{ github.repository_owner }}:${{ env.BASEAPP_PR_BRANCH }}&state=all' \
+                'https://api.github.com/repos/${{ github.repository }}/pulls
