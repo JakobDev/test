@@ -4,7 +4,7 @@ on:
   push
 
 permissions:
-  pull-requests: read
+  pull-requests: read, write
 
 jobs:
   check_pr_branch:
@@ -16,3 +16,11 @@ jobs:
                 -H "Accept: application/vnd.github.v3+json" \
                 -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
                 'https://api.github.com/repos/${{ github.repository }}/pulls
+
+          curl --location --request POST 'https://api.github.com/repos/JakobDev/Test/issues/19/labels' \
+          --header 'Accept: application/vnd.github.v3+json' \
+          --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'Content-Type: application/json' \
+          --data-raw '{
+              "labels": ["Bug"]
+          }'
