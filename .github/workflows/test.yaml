@@ -22,7 +22,8 @@ jobs:
     steps:
       - name: Make sure the Label exists
         run: |
-          data=$(printf '{"name":"${{ matrix.branch }}","description":"All Pull Requests targeting the ' ${GIT_BASE_BRANCH:7} ' branch","color":"0052CC"}')
+          data=$(printf '{"name":"${{ matrix.branch }}","description":"All Pull Requests targeting the ' "${GIT_BASE_BRANCH:7}"" ' branch","color":"0052CC"}')
+          echo $data
           curl -L \
           -X POST \
           -H "Accept: application/vnd.github+json" \
