@@ -51,7 +51,8 @@ jobs:
           declare -i count=0
           while :
           do
-            number=$(go-yq ".[${count}].number" .pulls.json)
+            number=$(go-yq -oy ".[${count}].number" .pulls.json)
+            echo $number
             if [ $number = 'null' ]; then
                 break
             fi
