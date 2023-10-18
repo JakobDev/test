@@ -1,24 +1,18 @@
 name: Check PR branch
 
 on: 
-  pull_request:
-    types:
-      - opened
-    branches-ignore:
-      - new-pr
+  push
 
 permissions:
-  pull-requests: write
+  pull-requests: read
 
 jobs:
   check_pr_branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v2
-        with:
-          message: |
-            It looks like you made your PR not against the `new-pr` branch. If you want to submit a App, you must target the `new-pr` branch.
+      - run: |
+          curl \
+                -X GET \
+                -H "Accept: application/vnd.github.v3+json" \
+                -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+                'https://api.github.com/repos/${{ github.repository }}/pulls?base=${{ env.GIT_BASE_BRANCH }}&head=${{ github.repository_owner }}:${{ env.BASEAPP_PR_BRANCH }}&state=all' \
